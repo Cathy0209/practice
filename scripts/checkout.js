@@ -122,7 +122,9 @@ document.querySelectorAll('.js-delete-link')
       link.addEventListener('click', () => {
         const productId = link.dataset.productId;
 
-        console.log(productId);
+        const container = document.querySelector(`.js-cart-item-container-${productId}`);
+
+        container.classList.add('is-editing-quantity');
       })
     });
 
