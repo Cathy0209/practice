@@ -37,6 +37,7 @@ export function addToCart(productId) {
   saveToStorage();
 }
 
+
 export function removeFromCart (productId) {
   const newCart = [];
 
@@ -60,3 +61,18 @@ export function calculateCartQuantity () {
 
   return cartQuantity;
 }
+
+export function updateQuantity(productId, newQuantity) {
+  let matchingItem;
+
+  cart.forEach((cartItem) => {
+    if (productId === cartItem.productId) {
+      matchingItem = cartItem;
+    }
+  });
+
+  matchingItem.quantity = newQuantity;
+
+  saveToStorage();
+  }
+
