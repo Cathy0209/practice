@@ -123,11 +123,8 @@ export function renderOrderSummary () {
         const productId = link.dataset.productId;
         removeFromCart(productId);
 
-        const container = document.querySelector(`.js-cart-item-container-${productId}`);
-
-        container.remove();
-
         renderPaymentSummary();
+        renderOrderSummary();
       })
     });
 
@@ -167,11 +164,10 @@ export function renderOrderSummary () {
           container.classList.remove('is-editing-quantity');
 
           updateQuantity(productId, newQuantity);
-
-          document.querySelector('.js-quantity-label')
-            .innerHTML = `${newQuantity}`;
-
           updateCartQuantity();
+          renderOrderSummary();
+          renderPaymentSummary();
+
         });
       });
 
